@@ -1,6 +1,7 @@
 package com.leomoreiradev.io.strconsumer.listeners;
 
 import com.leomoreiradev.io.strconsumer.custom.StrConsumerCustomListener;
+import lombok.SneakyThrows;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.kafka.annotation.KafkaListener;
 import org.springframework.kafka.annotation.TopicPartition;
@@ -10,9 +11,11 @@ import org.springframework.stereotype.Component;
 @Component
 public class StrConsumerListener {
 
+    //@SneakyThrows // anotação do lombok que subistitui o throws Exception do metodo
     @StrConsumerCustomListener(groupId = "group-1") //usando listener customizado
-    public void create(String message) {
+    public void create(String message) throws IllegalAccessException {
         log.info("CREATE ::: Receive  message {}", message);
+        throw new IllegalAccessException("EXCEPTION...");
     }
 
     @StrConsumerCustomListener(groupId = "group-1")
