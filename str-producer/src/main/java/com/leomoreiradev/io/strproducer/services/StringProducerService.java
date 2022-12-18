@@ -17,7 +17,7 @@ public class StringProducerService {
                 success -> {
                     if (success != null) {
                         log.info("Send message with success {}", message);
-                        log.info("Partition {}, Offset {}", 
+                        log.info("Partition {}, Offset {}",
                                  success.getRecordMetadata().partition(),
                                  success.getRecordMetadata().offset());
                     }
